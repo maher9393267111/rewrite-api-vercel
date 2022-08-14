@@ -8,6 +8,9 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
+const userRouter = require("./routes/user");
+
+
 //connect to MongoDB
 mongoose.connect("mongodb+srv://maher:maher9326@cluster0.nf63j.mongodb.net/graph?retryWrites=true&w=majority'");
 const db = mongoose.connection;
@@ -74,6 +77,9 @@ app.get("/api/hello", async (req, res) => {
 
   res.send("Hello World!");
 });
+
+
+app.use("/api/user", userRouter);
 
 
 
